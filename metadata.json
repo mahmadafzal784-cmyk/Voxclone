@@ -1,0 +1,12 @@
+{
+  "name": "VoxClone AI",
+  "description": "Professional-grade AI voice cloning and text-to-speech platform with real-time pitch modulation and cinematic effects.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "AI Voice Cloning",
+    "Multilingual TTS",
+    "Real-time Audio Modulation"
+  ]
+}

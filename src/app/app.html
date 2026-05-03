@@ -1,0 +1,163 @@
+<div class="min-h-screen flex text-slate-100">
+  <!-- Sidebar -->
+  <aside class="w-64 bg-bg-card border-r border-white/5 flex flex-col p-6 gap-8 shrink-0 hidden lg:flex">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center rotate-3 shadow-lg shadow-primary/20">
+        <mat-icon class="w-6 h-6 text-bg-deep flex items-center justify-center">waves</mat-icon>
+      </div>
+      <div>
+        <h1 class="text-xl font-display font-black tracking-tighter text-white">VOXCLONE <span class="text-primary italic">AI</span></h1>
+        <p class="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Professional TTS</p>
+      </div>
+    </div>
+
+    <nav class="flex-1 space-y-1">
+      <a href="#" class="flex items-center gap-3 px-4 py-3 bg-primary/10 text-primary rounded-xl font-bold transition-all border border-primary/20">
+        <mat-icon class="w-5 h-5 flex items-center justify-center">bolt</mat-icon>
+        Workstation
+      </a>
+      <a href="#" class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-white/5 rounded-xl font-medium transition-all group">
+        <mat-icon class="w-5 h-5 group-hover:text-primary transition-colors flex items-center justify-center">history</mat-icon>
+        Generation Lab
+      </a>
+      <a href="#" class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-white/5 rounded-xl font-medium transition-all group">
+        <mat-icon class="w-5 h-5 flex items-center justify-center">info</mat-icon>
+        Model Docs
+      </a>
+    </nav>
+
+    <div class="mt-auto space-y-4">
+      <div class="p-4 bg-slate-900 rounded-xl border border-white/5">
+        <p class="text-xs font-bold text-slate-500 mb-2 uppercase tracking-wide">Usage Limit</p>
+        <div class="h-1.5 bg-slate-800 rounded-full overflow-hidden mb-2">
+          <div class="h-full bg-primary w-[45%] rounded-full shadow-[0_0_8px_white]"></div>
+        </div>
+        <p class="text-[10px] text-slate-400 flex justify-between font-mono">
+          <span>450 / 1000 sec</span>
+          <span class="text-primary">SPARK</span>
+        </p>
+      </div>
+      
+      <button class="w-full flex items-center justify-center gap-2 py-3 bg-white/5 hover:bg-white/10 text-slate-300 text-xs font-bold rounded-xl transition-all">
+        <mat-icon class="w-4 h-4 flex items-center justify-center">terminal</mat-icon>
+        V.2.0.4-Flash
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-1 flex flex-col h-screen overflow-hidden">
+    <!-- Header -->
+    <header class="h-16 flex items-center justify-between px-8 shrink-0 z-10 border-b border-border-subtle bg-bg-deep/50 backdrop-blur-md">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center shadow-[0_0_15px_rgba(59,130,246,0.5)]">
+          <mat-icon class="w-5 h-5 text-white flex items-center justify-center">waves</mat-icon>
+        </div>
+        <div>
+          <h1 class="text-lg font-bold tracking-tight text-white uppercase">Vox Clone Pro</h1>
+          <p class="text-[9px] text-gray-500 uppercase tracking-widest font-mono">Neural Synthesis v2.4</p>
+        </div>
+      </div>
+      
+      <div class="flex items-center gap-4">
+        <div class="flex items-center gap-2 px-3 py-1 bg-border-subtle border border-border-active rounded-full">
+          <div class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
+          <span class="text-[10px] font-mono text-gray-400">ACCELERATED</span>
+        </div>
+        <div class="w-8 h-8 rounded-full bg-slate-800 border border-white/10 overflow-hidden">
+          <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Vox" alt="User" class="w-full h-full object-cover">
+        </div>
+      </div>
+    </header>
+
+    <!-- Bento Grid Area -->
+    <div class="flex-1 overflow-y-auto p-4 bg-bg-deep">
+      <div class="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-12 md:grid-rows-6 gap-4 h-full md:h-[calc(100vh-120px)] min-h-[800px]">
+        
+        <!-- 1. Voice Clone Recorder (Top Left) -->
+        <div class="md:col-span-4 md:row-span-3">
+          <app-recorder class="h-full"></app-recorder>
+        </div>
+
+        <!-- 2. Parameters / Engine Settings (Top Mid) -->
+        <div class="md:col-span-5 md:row-span-3">
+          <div class="bento-card h-full">
+            <h2 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-6 border-b border-border-subtle pb-2">Engine Parameters</h2>
+            
+            <div class="space-y-8 flex-1">
+              <div>
+                <div class="flex justify-between mb-3">
+                  <label for="pitch-slider-main" class="text-[10px] text-gray-500 uppercase font-bold tracking-wider">Pitch Shift</label>
+                  <span class="text-xs text-primary font-mono font-bold">{{ voiceService.generationHistory()[0]?.pitch || 0 }} semitones</span>
+                </div>
+                <input id="pitch-slider-main" type="range" min="-12" max="12" step="1" 
+                       class="w-full h-1 bg-bg-deep rounded-lg appearance-none cursor-pointer accent-primary">
+                <div class="flex justify-between mt-2 text-[9px] text-gray-600 font-mono">
+                  <span>DEEP (-12)</span>
+                  <span>NEUTRAL</span>
+                  <span>VOCAL (+12)</span>
+                </div>
+              </div>
+
+              <!-- Integration status / Active Clone info -->
+              <div class="p-4 bg-primary/5 border border-primary/10 rounded-xl mt-auto">
+                <div class="flex items-center gap-4">
+                  <div class="w-10 h-10 rounded-full bg-bg-deep border border-border-subtle flex items-center justify-center text-primary font-bold shadow-inner">
+                    {{ voiceService.currentSample() ? 'AC' : '--' }}
+                  </div>
+                  <div>
+                    <p class="text-xs font-semibold text-gray-200">
+                      {{ voiceService.currentSample()?.name || 'No Active Clone' }}
+                    </p>
+                    <p class="text-[10px] text-gray-500">
+                      {{ voiceService.currentSample() ? 'Cloning confidence: 94.2%' : 'Capture voice to begin' }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Export Status (Top Right) -->
+        <div class="md:col-span-3 md:row-span-3">
+          <div class="bento-card h-full bg-gradient-to-br from-bg-card to-bg-deep">
+            <h2 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Export Queue</h2>
+            <div class="flex-1 space-y-3 overflow-y-auto pr-2">
+              @for (item of voiceService.generationHistory().slice(0, 3); track item.id) {
+                <div class="p-3 inner-box flex justify-between items-center group hover:border-primary/30 transition-colors">
+                  <span class="text-[9px] font-mono text-gray-400 truncate max-w-[120px]">CLIP_{{ item.id.substring(0,8) }}.WAV</span>
+                  <span class="text-[8px] bg-emerald-500/10 text-emerald-500 px-1.5 py-0.5 rounded font-bold">READY</span>
+                </div>
+              } @empty {
+                <div class="h-full flex flex-col items-center justify-center opacity-20 text-center">
+                  <mat-icon class="w-8 h-8 mb-2 flex items-center justify-center">bolt</mat-icon>
+                  <p class="text-[10px] uppercase font-bold tracking-widest">Queue Empty</p>
+                </div>
+              }
+            </div>
+            <div class="mt-4 pt-4 border-t border-border-subtle space-y-2">
+              <button class="w-full py-2 bg-primary hover:bg-primary-dark text-bg-deep rounded-lg text-xs font-bold transition-all disabled:opacity-50" [disabled]="voiceService.generationHistory().length === 0">
+                DOWNLOAD PACK
+              </button>
+              <button class="w-full py-2 bg-transparent border border-border-active text-gray-500 hover:text-gray-300 rounded-lg text-[10px] font-bold uppercase tracking-wider" (click)="voiceService.clearHistory()">
+                PURGE SCRATCH
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Main Text Input / Synthesis (Bottom Left/Mid) -->
+        <div class="md:col-span-9 md:row-span-3">
+          <app-generator class="h-full"></app-generator>
+        </div>
+
+        <!-- 5. History Log (Bottom Right) -->
+        <div class="md:col-span-3 md:row-span-3">
+          <app-history class="h-full"></app-history>
+        </div>
+
+      </div>
+    </div>
+  </main>
+</div>

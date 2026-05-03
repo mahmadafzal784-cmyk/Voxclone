@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-primary: #3B82F6; /* Blue 500 */
+  --color-primary-dark: #2563EB; /* Blue 600 */
+  --color-bg-deep: #0B0D0E;
+  --color-bg-card: #131517;
+  --color-border-subtle: #232629;
+  --color-border-active: #2D3135;
+}
+
+@layer base {
+  body {
+    @apply bg-bg-deep text-slate-200 font-sans selection:bg-primary/30;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display font-bold tracking-tight;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-bg-deep;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-border-subtle rounded-full hover:bg-border-active transition-colors;
+}
+
+/* Bento Card Style */
+.bento-card {
+  @apply bg-bg-card border border-border-subtle rounded-2xl p-5 flex flex-col transition-all;
+}
+
+.inner-box {
+  @apply bg-bg-deep rounded-xl border border-border-subtle;
+}
